@@ -4,9 +4,14 @@ run-name: ${{ github.actor }} - ${{ github.ref_name}} -${{ github.sha }}
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+      - develop
+
 
 env:
   PythonVersion: 3.8
