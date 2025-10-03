@@ -99,22 +99,19 @@ jobs:
           name: helm-artifacts
           path: ./helm-artifacts
 
-      - name: List downloaded helm artifacts
-        run: ls -la ./helm-artifacts
-
       - name: Set up Helm
         uses: azure/setup-helm@v4.3.0
 
       - name: Execute helm template
         run: |
-          helm template todoapp ./helm-artifacts/helm-charts/todoapp -f ./helm-artifacts/helm-charts/todoapp/values.yaml
+          helm template todoapp ./helm-artifacts/todoapp -f ./helm-artifacts/todoapp/values.yaml
 
       - name: Execute helm lint
         run: |
-          helm lint ./helm-artifacts/helm-charts/todoapp
+          helm lint ./helm-artifacts/todoapp
 
       - name: Package Helm
-        run: helm package ./helm-artifacts/helm-charts/todoapp
+        run: helm package ./helm-artifacts/todoapp
 
       - name: Upload Helm package
         uses: actions/upload-artifact@v4
