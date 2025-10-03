@@ -100,10 +100,15 @@ jobs:
           
       - name: Set up Helm
         uses: azure/setup-helm@v4.3.0
-      
+
+
+      - name: Change directory to helm-charts
+        run: cd helm-charts
+
+        
       - name: Execute helm template
         run: |
-          helm template todoapp helm-charts/todoapp -f helm-charts/todoapp/values.yaml
+          helm template todoapp ./todoapp -f ./todoapp/values.yaml
 
       - name: Execute helm lint
         run: |
