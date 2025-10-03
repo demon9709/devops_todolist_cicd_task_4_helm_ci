@@ -103,7 +103,7 @@ jobs:
       
       - name: Execute helm template
         run: |
-          helm template todoapp helm-charts/todoapp -f helm-charts/todoapp/values.yml
+          helm template todoapp helm-charts/todoapp -f helm-charts/todoapp/values.yaml
 
       - name: Execute helm lint
         run: |
