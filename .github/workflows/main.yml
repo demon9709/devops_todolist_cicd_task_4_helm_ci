@@ -102,20 +102,16 @@ jobs:
         uses: azure/setup-helm@v4.3.0
 
 
-      - name: Change directory to helm-charts
-        run: cd helm-charts
-
-        
       - name: Execute helm template
         run: |
-          helm template todoapp ./todoapp -f ./todoapp/values.yaml
+          helm template todoapp ./helm-charts/todoapp -f ./helm-charts/todoapp/values.yaml
 
       - name: Execute helm lint
         run: |
-          helm lint helm-charts/todoapp
+          helm lint ./helm-charts/todoapp
 
       - name: Package Helm
-        run: helm package helm-charts/todoapp
+        run: helm package ./helm-charts/todoapp
 
       - name: Upload Helm package
         uses: actions/upload-artifact@v4
